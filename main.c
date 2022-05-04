@@ -2,6 +2,13 @@
 #include <conio.h>
 #include <string.h>
 
+ char str1[50];
+ int i, tam;
+
+
+int ex01();
+
+
 
 
 int main(){
@@ -25,6 +32,7 @@ int main(){
 
          case 1:
            printf("Exercício 1\n");
+           ex01();
            break;
         case 2:
             printf("Exercício 2\n");
@@ -63,4 +71,33 @@ int main(){
     
     printf("Escolhido: %i, %c\n", menu, menu);
     return 0;
+}
+
+int ex01(){
+
+    /*
+            Crie um procedimento para:
+            - ler uma palavra do teclado;
+            - mostrar todas as letras maiúsculas que estão na palavra digitada.
+            DICA: Definir um teste para determinar se um caractere é letra maiúscula.
+    */
+
+  
+
+    printf("Digite uma palavra: \n");
+    
+    fflush(stdin);
+    gets(str1);
+
+    tam = strlen(str1);
+
+  //  printf("Tamanho: %i Foi digitado \n\n %s\n\n",tam, str1);
+
+    for(i = 0; i < tam; i++){
+        
+        if(str1[i] >= 65 && str1[i] <= 90 ){
+        printf("\n%c\n", str1[i]);
+        }
+    }
+
 }
