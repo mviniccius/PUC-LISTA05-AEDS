@@ -2,7 +2,7 @@
 #include <conio.h>
 #include <string.h>
 
- char str1[50], letra[2],str2[50];
+ char str1[50], letra,str2[50];
  int i, tam, cont, contIgual, contMaior;
 
 
@@ -116,48 +116,63 @@ int ex02(){
     - contar e mostrar as letras maiúsculas menores que o caractere, e quantas letras são maiores que o caractere, e 
       quantas são iguais ao caractere lido
 */
-
+    contIgual = 0;
+    contMaior = 0;
+    cont = 0;
     //Ler palavra do teclado
     printf("Digite uma palavra: \n");
     fflush(stdin);
     gets(str1);
+    
     //Ler caractere do teclado
-    printf("Digite um caracter");
+    printf("Digite um caracter\n");
     fflush(stdin);
-    gets(letra);
-
-    if(letra[0] >= 97 && letra[0] <= 122){
-            letra[0] -= 32;
+    scanf("%c", &letra);
+    
+    //trasformar caracter em maiusculo
+    if(letra >= 'a' && letra <= 'z'){
+            letra -= 32;
             }
     
     tam = strlen(str1);
     
-    printf("Palavra digitada: %s\nLetra digitada: %s\nTamanho palavra: %i\n", str1, letra, tam);
+    printf("Palavra digitada: %s\nLetra digitada: %c\nTamanho palavra: %i\n", str1, letra, tam);
 
-    for(i = 0; i  < tam; i++){
-            if(str1[i] >= 97 && str1[i] <= 122){
-            str1[i] -= 32;
+            //varrer a string
+            for(i = 0; i < tam; i++){
+                    if(str1[i] >= 'a' && str1[i] <= 'z'){
+                        str1[i] -= 32;
+                    }
             }
 
-            if(str1[i] == letra[0]){
-                printf("A Letra * %s *\n", letra);
+            for(i = 0; i < tam; i++){
+            if(str1[i] == letra){
                 contIgual++;
+                //printf("A Letra * %c *\n", letra);
+            }
             }
 
-            if(str1[i] < letra[0]){
-                strcpy(str2, str1);          
+            printf("String com os caracteres menores:\n");
+            for(i = 0; i < tam; i++){
+            //conta e mostra as letras menores que o caracter
+            if(str1[i] < letra){
+                printf("%c", str1[i]);                
+                cont++;    
+              }
             }
-    
-            if(str1[1] > letra [0]){
+            
+            for(i = 0; i < tam; i++){
+            if(str1[i] > letra){
                 contMaior++;
+              }
             }
 
-
-    }
+            
             //Palavra convertida
-            printf("* %s *\n", str1);
-            printf("Extracao:* %s *\n", str2);
-            printf("\nTem *%i* maior que * * \n Tem *%i* igual a * *\n", contMaior, contIgual);
+            printf("\nConvertida* %s *\n", str1);
+            printf("\nTem *%i* maior que *%c* \n Tem *%i* igual a *%c*\n", contMaior, letra, contIgual, letra);
+           
+   
 
 
     return 0;
@@ -206,11 +221,33 @@ int ex04(){
     for(i = tam-1; i >= 0; i--){
         
          if((str1[i] >= 65 && str1[i] <= 90) || (str1[i] >= 97 && str1[i] <= 122)){
-             printf("%s", str1[i]);
+             printf("%c", str1[i]);
              cont++;
          }
+    }
+     for(i = 0; i < tam; i++){
+            if(str1[i] >= 97 && str1[i] <= 122){
+            str1[i] -= 32;
+            }
+
+            if(str1[i] == letra){
+                printf("A Letra * %c *\n", letra);
+                contIgual++;
+            }
+
+            if(str1[i] < letra){
+                strcpy(str2, str1);          
+            }
+    
+            if(str1[1] > letra){
+                contMaior++;
+            }
+
 
     }
+            //Palavra convertida
+            printf("* %s *\n", str1);
+            printf("Extracao:* %s *\n", str2);
   //  printf("* %s *\n", str1);
     printf("\n");
 
